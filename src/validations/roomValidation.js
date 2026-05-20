@@ -19,7 +19,7 @@ const createRoomSchema = z.object({
   image: z.string().min(1, "Room image is required"),
   floor: z.number().int().min(1, "Floor must be at least 1"),
   capacity: z.number().int().min(1, "Capacity must be at least 1"),
-  pricePerHour: z.number().min(0, "Price cannot be negative"),
+  hourlyPrice: z.number().min(0, "Price cannot be negative"),
   amenities: z
     .array(z.enum(AMENITIES))
     .optional()
@@ -32,7 +32,7 @@ const updateRoomSchema = z.object({
   image: z.string().min(1, "Room image is required").optional(),
   floor: z.number().int().min(1, "Floor must be at least 1").optional(),
   capacity: z.number().int().min(1, "Capacity must be at least 1").optional(),
-  pricePerHour: z.number().min(0, "Price cannot be negative").optional(),
+  hourlyPrice: z.number().min(0, "Price cannot be negative").optional(),
   amenities: z
     .array(z.enum(AMENITIES))
     .optional(),

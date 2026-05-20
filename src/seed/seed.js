@@ -58,7 +58,7 @@ function buildBookings(createdUsers, createdRooms) {
     const [eh, em] = slot.endTime.split(":").map(Number);
     const durationHours = (eh * 60 + em - (sh * 60 + sm)) / 60;
 
-    const totalPrice = parseFloat((room.pricePerHour * durationHours).toFixed(2));
+    const totalPrice = parseFloat((room.hourlyPrice * durationHours).toFixed(2));
 
     // First 8 bookings are confirmed, last 4 are cancelled
     const status = i < 8 ? "confirmed" : "cancelled";

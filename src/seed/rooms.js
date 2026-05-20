@@ -8,7 +8,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop",
     floor: 1,
     capacity: 1,
-    pricePerHour: 8,
+    hourlyPrice: 8,
     amenities: ["WiFi", "Power Outlets", "Air Conditioning"],
   },
   {
@@ -19,7 +19,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
     floor: 2,
     capacity: 1,
-    pricePerHour: 10,
+    hourlyPrice: 10,
     amenities: ["WiFi", "Power Outlets", "Air Conditioning", "Natural Light"],
   },
   {
@@ -30,7 +30,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop",
     floor: 1,
     capacity: 2,
-    pricePerHour: 12,
+    hourlyPrice: 12,
     amenities: ["WiFi", "Power Outlets", "Whiteboard", "Natural Light"],
   },
   {
@@ -41,7 +41,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop",
     floor: 3,
     capacity: 2,
-    pricePerHour: 11,
+    hourlyPrice: 11,
     amenities: ["WiFi", "Power Outlets", "Natural Light", "Coffee Machine"],
   },
 
@@ -54,7 +54,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
     floor: 2,
     capacity: 4,
-    pricePerHour: 18,
+    hourlyPrice: 18,
     amenities: [
       "WiFi",
       "Power Outlets",
@@ -71,7 +71,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&h=600&fit=crop",
     floor: 3,
     capacity: 5,
-    pricePerHour: 22,
+    hourlyPrice: 22,
     amenities: [
       "WiFi",
       "Whiteboard",
@@ -88,7 +88,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop",
     floor: 4,
     capacity: 4,
-    pricePerHour: 20,
+    hourlyPrice: 20,
     amenities: [
       "WiFi",
       "Power Outlets",
@@ -105,7 +105,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop",
     floor: 2,
     capacity: 6,
-    pricePerHour: 25,
+    hourlyPrice: 25,
     amenities: [
       "WiFi",
       "Projector",
@@ -123,7 +123,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=800&h=600&fit=crop",
     floor: 3,
     capacity: 6,
-    pricePerHour: 24,
+    hourlyPrice: 24,
     amenities: [
       "WiFi",
       "Projector",
@@ -141,7 +141,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?w=800&h=600&fit=crop",
     floor: 1,
     capacity: 3,
-    pricePerHour: 14,
+    hourlyPrice: 14,
     amenities: [
       "WiFi",
       "Power Outlets",
@@ -157,7 +157,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=800&h=600&fit=crop",
     floor: 5,
     capacity: 4,
-    pricePerHour: 16,
+    hourlyPrice: 16,
     amenities: ["WiFi", "Power Outlets", "Natural Light", "Air Conditioning"],
   },
   {
@@ -168,7 +168,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop",
     floor: 2,
     capacity: 5,
-    pricePerHour: 21,
+    hourlyPrice: 21,
     amenities: [
       "WiFi",
       "Whiteboard",
@@ -188,7 +188,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1497366676254-6a68a5645e04?w=800&h=600&fit=crop",
     floor: 3,
     capacity: 8,
-    pricePerHour: 30,
+    hourlyPrice: 30,
     amenities: [
       "WiFi",
       "Meeting Display",
@@ -206,7 +206,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1462826303086-329426d1aef5?w=800&h=600&fit=crop",
     floor: 4,
     capacity: 8,
-    pricePerHour: 32,
+    hourlyPrice: 32,
     amenities: [
       "WiFi",
       "Projector",
@@ -224,7 +224,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1517048676734-d65bc937f952?w=800&h=600&fit=crop",
     floor: 1,
     capacity: 7,
-    pricePerHour: 28,
+    hourlyPrice: 28,
     amenities: [
       "WiFi",
       "Natural Light",
@@ -242,7 +242,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop",
     floor: 2,
     capacity: 9,
-    pricePerHour: 35,
+    hourlyPrice: 35,
     amenities: [
       "WiFi",
       "Meeting Display",
@@ -261,7 +261,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
     floor: 5,
     capacity: 8,
-    pricePerHour: 30,
+    hourlyPrice: 30,
     amenities: [
       "WiFi",
       "Sound System",
@@ -281,7 +281,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop",
     floor: 5,
     capacity: 12,
-    pricePerHour: 50,
+    hourlyPrice: 50,
     amenities: [
       "WiFi",
       "Projector",
@@ -303,7 +303,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop",
     floor: 4,
     capacity: 10,
-    pricePerHour: 42,
+    hourlyPrice: 42,
     amenities: [
       "WiFi",
       "Projector",
@@ -323,7 +323,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
     floor: 3,
     capacity: 12,
-    pricePerHour: 45,
+    hourlyPrice: 45,
     amenities: [
       "WiFi",
       "Projector",
@@ -342,7 +342,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&h=600&fit=crop",
     floor: 5,
     capacity: 10,
-    pricePerHour: 48,
+    hourlyPrice: 48,
     amenities: [
       "WiFi",
       "Meeting Display",
@@ -362,7 +362,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=800&h=600&fit=crop",
     floor: 4,
     capacity: 11,
-    pricePerHour: 40,
+    hourlyPrice: 40,
     amenities: [
       "WiFi",
       "Projector",
@@ -381,7 +381,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?w=800&h=600&fit=crop",
     floor: 4,
     capacity: 10,
-    pricePerHour: 44,
+    hourlyPrice: 44,
     amenities: [
       "WiFi",
       "Projector",
@@ -403,7 +403,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=800&h=600&fit=crop",
     floor: 1,
     capacity: 1,
-    pricePerHour: 6,
+    hourlyPrice: 6,
     amenities: ["WiFi", "Power Outlets", "Air Conditioning"],
   },
   {
@@ -414,7 +414,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop",
     floor: 5,
     capacity: 3,
-    pricePerHour: 15,
+    hourlyPrice: 15,
     amenities: ["WiFi", "Power Outlets", "Natural Light", "Air Conditioning"],
   },
   {
@@ -425,7 +425,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1517048676734-d65bc937f952?w=800&h=600&fit=crop",
     floor: 1,
     capacity: 4,
-    pricePerHour: 19,
+    hourlyPrice: 19,
     amenities: [
       "WiFi",
       "Power Outlets",
@@ -442,7 +442,7 @@ module.exports = [
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop",
     floor: 3,
     capacity: 5,
-    pricePerHour: 23,
+    hourlyPrice: 23,
     amenities: [
       "WiFi",
       "Natural Light",

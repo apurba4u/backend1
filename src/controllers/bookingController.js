@@ -64,7 +64,7 @@ const createBooking = asyncHandler(async (req, res) => {
   if (hours <= 0) {
     throw new ApiError(400, "Invalid time range.");
   }
-  const totalPrice = Math.round(hours * room.pricePerHour * 100) / 100;
+  const totalPrice = Math.round(hours * room.hourlyPrice * 100) / 100;
 
   // Create booking
   const booking = await Booking.create({

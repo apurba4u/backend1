@@ -38,9 +38,9 @@ const roomSchema = new mongoose.Schema(
       required: [true, "Capacity is required"],
       min: [1, "Capacity must be at least 1"],
     },
-    pricePerHour: {
+    hourlyPrice: {
       type: Number,
-      required: [true, "Price per hour is required"],
+      required: [true, "Hourly price is required"],
       min: [0, "Price cannot be negative"],
     },
     amenities: {

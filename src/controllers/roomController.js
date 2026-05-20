@@ -35,9 +35,9 @@ const getAllRooms = asyncHandler(async (req, res) => {
 
   // Filter by price range
   if (priceMin || priceMax) {
-    filter.pricePerHour = {};
-    if (priceMin) filter.pricePerHour.$gte = Number(priceMin);
-    if (priceMax) filter.pricePerHour.$lte = Number(priceMax);
+    filter.hourlyPrice = {};
+    if (priceMin) filter.hourlyPrice.$gte = Number(priceMin);
+    if (priceMax) filter.hourlyPrice.$lte = Number(priceMax);
   }
 
   const pageNum = Math.max(1, Number(page));
@@ -83,7 +83,7 @@ const getRoomById = asyncHandler(async (req, res) => {
 // ─── Create Room ─────────────────────────────────────────────────────────────
 
 const createRoom = asyncHandler(async (req, res) => {
-  const { name, description, image, floor, capacity, pricePerHour, amenities } =
+  const { name, description, image, floor, capacity, hourlyPrice, amenities } =
     req.body;
 
   const room = await Room.create({
@@ -92,7 +92,7 @@ const createRoom = asyncHandler(async (req, res) => {
     image,
     floor,
     capacity,
-    pricePerHour,
+    hourlyPrice,
     amenities: amenities || [],
     owner: req.user._id,
   });
