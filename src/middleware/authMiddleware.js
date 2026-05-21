@@ -1,14 +1,11 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const ApiError = require("../utils/ApiError");
-const { fromNodeHeaders } = require("better-auth/node");
 
 /**
  * Protects routes by verifying authentication.
  * Checks JWT cookie first (email/password login),
  * then Better Auth session (Google OAuth login).
- *
- * @param {import("better-auth").Auth} [betterAuth] - Optional Better Auth instance for session check
  */
 const protect = async (req, res, next) => {
   try {
@@ -33,16 +30,16 @@ const protect = async (req, res, next) => {
       req.cookies["__Secure-better-auth.session_token"];
     if (sessionCookie && req.app._betterAuth) {
       try {
+        // Dynamic import: better-auth/node is ESM-only
+        const { fromNodeHeaders } = await import("better-auth/node");
         const headers = fromNodeHeaders(req.headers);
         const session = await req.app._betterAuth.api.getSession({
           headers,
         });
 
         if (session?.user) {
-          // Find or create user in Mongoose User collection
           let user = await User.findOne({ email: session.user.email });
           if (!user) {
-            // Create user in Mongoose collection for Better Auth OAuth users
             user = await User.create({
               name: session.user.name || session.user.email.split("@")[0],
               email: session.user.email,

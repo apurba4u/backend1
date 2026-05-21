@@ -1,6 +1,5 @@
 const { betterAuth } = require("better-auth");
 const { mongodbAdapter } = require("better-auth/adapters/mongodb");
-const { toNodeHandler } = require("better-auth/node");
 const mongoose = require("mongoose");
 
 /**
@@ -60,9 +59,10 @@ function createAuth() {
 
 /**
  * Get the Node.js request handler for Express.
- * Call this after createAuth().
+ * Uses dynamic import() because better-auth/node is ESM-only.
  */
-function getAuthHandler(auth) {
+async function getAuthHandler(auth) {
+  const { toNodeHandler } = await import("better-auth/node");
   return toNodeHandler(auth);
 }
 

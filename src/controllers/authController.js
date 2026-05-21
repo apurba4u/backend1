@@ -19,7 +19,7 @@ const generateToken = (userId) => {
  */
 const getCookieOptions = () => ({
   httpOnly: true,
-  sameSite: "strict",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   secure: process.env.NODE_ENV === "production",
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 });
@@ -87,11 +87,7 @@ const login = asyncHandler(async (req, res) => {
 const logout = asyncHandler(async (req, res) => {
   res
     .status(200)
-    .clearCookie("token", {
-      httpOnly: true,
-      sameSite: "strict",
-      secure: process.env.NODE_ENV === "production",
-    })
+    .clearCookie("token", getCookieOptions())
     .json({
       success: true,
       message: "Logged out successfully",

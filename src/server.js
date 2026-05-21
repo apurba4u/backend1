@@ -14,7 +14,7 @@ const startServer = async () => {
     const app = createApp();
 
     const auth = createAuth();
-    const authHandler = getAuthHandler(auth);
+    const authHandler = await getAuthHandler(auth);
     app.setAuthHandler(authHandler, auth);
     console.log("Better Auth initialized with Google provider");
 
