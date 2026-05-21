@@ -58,11 +58,13 @@ function createApp(initMiddleware) {
 
     if (isBetterAuthRequest) {
       if (!authHandler) {
+        console.error("[Auth] Handler not ready for:", req.path);
         return res.status(503).json({
           success: false,
           message: "Auth service not ready",
         });
       }
+      console.log("[Auth] Handling:", req.method, req.path, "query:", JSON.stringify(req.query));
       return authHandler(req, res);
     }
 
