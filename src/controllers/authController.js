@@ -17,10 +17,12 @@ const generateToken = (userId) => {
 /**
  * Cookie options shared across login and register.
  */
+const isHttps = (process.env.BETTER_AUTH_URL || "").startsWith("https://");
+
 const getCookieOptions = () => ({
   httpOnly: true,
-  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-  secure: process.env.NODE_ENV === "production",
+  sameSite: isHttps ? "none" : "lax",
+  secure: isHttps,
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 });
 
