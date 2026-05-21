@@ -1,28 +1,64 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const ApiError = require("../utils/ApiError");
+const { fromNodeHeaders } = require("better-auth/node");
 
 /**
- * Protects routes by verifying the JWT from the "token" cookie.
- * Attaches the authenticated user (without password) to req.user.
+ * Protects routes by verifying authentication.
+ * Checks JWT cookie first (email/password login),
+ * then Better Auth session (Google OAuth login).
+ *
+ * @param {import("better-auth").Auth} [betterAuth] - Optional Better Auth instance for session check
  */
 const protect = async (req, res, next) => {
   try {
+    // 1. Try JWT cookie (email/password auth)
     const token = req.cookies.token;
-
-    if (!token) {
-      throw new ApiError(401, "Not authenticated. Please log in.");
+    if (token) {
+      try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const user = await User.findById(decoded.id).select("-password");
+        if (user) {
+          req.user = user;
+          return next();
+        }
+      } catch {
+        // JWT invalid or expired, fall through to Better Auth check
+      }
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // 2. Try Better Auth session (Google OAuth auth)
+    const sessionCookie =
+      req.cookies["better-auth.session_token"] ||
+      req.cookies["__Secure-better-auth.session_token"];
+    if (sessionCookie && req.app._betterAuth) {
+      try {
+        const headers = fromNodeHeaders(req.headers);
+        const session = await req.app._betterAuth.api.getSession({
+          headers,
+        });
 
-    const user = await User.findById(decoded.id).select("-password");
-    if (!user) {
-      throw new ApiError(401, "User no longer exists.");
+        if (session?.user) {
+          // Find or create user in Mongoose User collection
+          let user = await User.findOne({ email: session.user.email });
+          if (!user) {
+            // Create user in Mongoose collection for Better Auth OAuth users
+            user = await User.create({
+              name: session.user.name || session.user.email.split("@")[0],
+              email: session.user.email,
+              avatar: session.user.image || session.user.avatar || "",
+              role: "user",
+            });
+          }
+          req.user = user;
+          return next();
+        }
+      } catch {
+        // Better Auth session check failed, fall through
+      }
     }
 
-    req.user = user;
-    next();
+    throw new ApiError(401, "Not authenticated. Please log in.");
   } catch (error) {
     if (error instanceof ApiError) {
       return next(error);
