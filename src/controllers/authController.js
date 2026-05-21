@@ -29,7 +29,7 @@ const getCookieOptions = () => ({
 // ─── Register ────────────────────────────────────────────────────────────────
 
 const register = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, photoURL } = req.body;
 
   // Check if email already exists
   const existingUser = await User.findOne({ email });
@@ -45,6 +45,7 @@ const register = asyncHandler(async (req, res) => {
     name,
     email,
     password: hashedPassword,
+    photoURL,
   });
 
   // Generate token and set cookie

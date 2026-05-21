@@ -43,7 +43,7 @@ const protect = async (req, res, next) => {
             user = await User.create({
               name: session.user.name || session.user.email.split("@")[0],
               email: session.user.email,
-              avatar: session.user.image || session.user.avatar || "",
+              photoURL: session.user.image || "",
               role: "user",
             });
           }

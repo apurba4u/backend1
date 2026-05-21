@@ -10,6 +10,10 @@ const registerSchema = z.object({
     .email("Please provide a valid email address")
     .trim()
     .toLowerCase(),
+  photoURL: z
+    .string()
+    .url("Please provide a valid URL")
+    .min(1, "Photo URL is required"),
   password: z
     .string()
     .min(6, "Password must be at least 6 characters"),

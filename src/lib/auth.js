@@ -33,7 +33,7 @@ async function createAuth() {
       modelName: "users",
       fields: {
         emailVerified: "emailVerified",
-        image: "avatar",
+        image: "photoURL",
       },
       additionalFields: {
         role: {
