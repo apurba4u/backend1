@@ -20,7 +20,7 @@ const app = createApp(async (req, res, next) => {
 
     // Initialize Better Auth (once)
     if (!authInitialized) {
-      const auth = createAuth();
+      const auth = await createAuth();
       const authHandler = await getAuthHandler(auth);
       app.setAuthHandler(authHandler, auth);
       authInitialized = true;

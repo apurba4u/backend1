@@ -1,12 +1,14 @@
-const { betterAuth } = require("better-auth");
-const { mongodbAdapter } = require("better-auth/adapters/mongodb");
 const mongoose = require("mongoose");
 
 /**
  * Initialize Better Auth with MongoDB adapter and Google provider.
  * Must be called after mongoose.connect().
+ * Uses dynamic import() because better-auth is ESM-only.
  */
-function createAuth() {
+async function createAuth() {
+  const { betterAuth } = await import("better-auth");
+  const { mongodbAdapter } = await import("better-auth/adapters/mongodb");
+
   const db = mongoose.connection.db;
 
   if (!db) {
