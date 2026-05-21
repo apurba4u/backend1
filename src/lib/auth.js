@@ -56,7 +56,7 @@ async function createAuth() {
     },
     advanced: {
       generateId: () => undefined, // Let MongoDB generate IDs
-      ...(process.env.NODE_ENV === "production" ? {
+      ...((process.env.BETTER_AUTH_URL || "").startsWith("https://") ? {
         defaultCookieAttributes: {
           sameSite: "none",
           secure: true,
