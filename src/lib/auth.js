@@ -51,8 +51,17 @@ async function createAuth() {
         maxAge: 60 * 5, // 5 minutes
       },
     },
+    account: {
+      skipStateCookieCheck: true,
+    },
     advanced: {
       generateId: () => undefined, // Let MongoDB generate IDs
+      ...(process.env.NODE_ENV === "production" ? {
+        defaultCookieAttributes: {
+          sameSite: "none",
+          secure: true,
+        },
+      } : {}),
     },
   });
 
